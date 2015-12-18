@@ -1,6 +1,3 @@
-
-
-
 // When the extension is installed or upgraded ...
 chrome.runtime.onInstalled.addListener(function() {
     // Replace all rules ...
@@ -22,23 +19,20 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() { });
+//    alert("foo");
+    document.getElementById('status').textContent = "jojojojojo";
+  
 
-
-chrome.pageAction.onClicked.addListener(function(tab) { 
+    var x = new XMLHttpRequest();
+    x.open('GET', 'https://gate.finnair.com/');
     
-    var url;
-    chrome.tabs.create({"url":"https://gate.finnair.com/" + 
-			"cvpn/http/skyway.finnair.fi/FinnairWDT/StartApplication.aspx?group=appgroup-2&application=app-0","selected":true},
-			   function (tab) { 
-			       //alert("tab" + tab.id);
-			       setTimeout(function(){
-			           chrome.tabs.executeScript(null, { file:"content_script.js"   });
-			       } ,5000); //15 is recommended minimum
-			   });
-
-
-  //  alert('icon clicked')
-});
-
+    x.onload = function() {
+	
+	var response = x.response;
+//	alert("here");
+//	document.getElementById('status').innerHTML = x.responseText;
+	return;
+    }
+//	alert("here1");
+  x.send();
 
